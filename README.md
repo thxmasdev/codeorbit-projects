@@ -38,7 +38,8 @@ frontend/
 ├── vite.config.js       # Vite configuration
 ├── eslint.config.js     # ESLint configuration
 └── .gitignore          # Git ignore rules
-
+```
+---
 ## Features
 
 - 🎨 Modern UI with Tailwind CSS
