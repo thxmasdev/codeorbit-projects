@@ -12,7 +12,6 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Reduce the effect of scroll on navbar background
       if (window.scrollY > 50) {
         setIsScrolled(true);
       } else {
@@ -23,9 +22,6 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-
-
 
   const navItems = [
     { name: 'Inicio', href: '#home' },
@@ -47,7 +43,7 @@ const Navbar = () => {
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-transparent shadow-none backdrop-blur-none' 
+          ? 'bg-white/70 dark:bg-dark-900/70 backdrop-blur-md shadow-sm' 
           : 'bg-transparent'
       }`}
       initial={{ y: -100, opacity: 0 }}
@@ -162,6 +158,5 @@ const Navbar = () => {
     </motion.nav>
   );
 };
-
 
 export default Navbar;
