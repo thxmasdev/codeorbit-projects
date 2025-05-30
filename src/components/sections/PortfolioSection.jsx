@@ -10,10 +10,11 @@ import "slick-carousel/slick/slick-theme.css";
 const projects = [
   {
     id: 1,
-    title: 'Sitio Web Corporativo',
-    description: 'Desarrollo de un sitio web corporativo moderno y responsivo para una empresa líder.',
-    image: '',
+    title: 'Sitio Web para un club de Deportes',
+    description: 'Desarrollo de un sitio web para un club de rugby/hockey.',
+    image: 'https://i.imgur.com/zDxSg99.png',
     technologies: ['React', 'Tailwind CSS', 'Vite'],
+    url: 'https://clubdeportes.example.com',
   },
   {
     id: 2,
@@ -21,6 +22,7 @@ const projects = [
     description: 'Aplicación móvil para comercio electrónico con integración de pagos y notificaciones.',
     image: '/projects/mobile-commerce.jpg',
     technologies: ['React Native', 'Expo', 'Firebase'],
+    url: 'https://mobilecommerce.example.com',
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const projects = [
     description: 'Plataforma web para cursos en línea con sistema de gestión de usuarios y contenido.',
     image: '/projects/education-platform.jpg',
     technologies: ['Next.js', 'Node.js', 'MongoDB'],
+    url: 'https://educationplatform.example.com',
   },
   {
     id: 4,
@@ -35,6 +38,7 @@ const projects = [
     description: 'E-commerce completo con carrito de compras, pasarela de pago y panel administrativo.',
     image: '/projects/online-store.jpg',
     technologies: ['Shopify', 'Liquid', 'GraphQL'],
+    url: 'https://onlinestore.example.com',
   },
 ];
 
@@ -129,7 +133,7 @@ const PortfolioSection = () => {
           variants={containerVariants}
         >
           <Slider {...settings}>
-            {projects.map(({ id, title, description, image, technologies }) => (
+            {projects.map(({ id, title, description, image, technologies, url }) => (
               <motion.div key={id} variants={itemVariants} className="px-4">
                 <Card className="cursor-pointer p-0 overflow-hidden" onClick={() => setSelectedProject(id)}>
                   {image ? (
@@ -150,6 +154,19 @@ const PortfolioSection = () => {
                         </span>
                       ))}
                     </div>
+                    {url && (
+                      <div className="mt-4">
+                        <a
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block px-4 py-2 bg-primary-500 text-white rounded hover:bg-primary-600 transition"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          Ver sitio
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </Card>
               </motion.div>
@@ -204,6 +221,18 @@ const PortfolioSection = () => {
                   </span>
                 ))}
               </div>
+              {projects.find((p) => p.id === selectedProject)?.url && (
+                <div className="mt-6">
+                  <a
+                    href={projects.find((p) => p.id === selectedProject)?.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-6 py-3 bg-primary-500 text-white rounded hover:bg-primary-600 transition"
+                  >
+                    Visitar sitio
+                  </a>
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
